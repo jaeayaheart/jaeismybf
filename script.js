@@ -213,7 +213,7 @@ const messages = [
   { from: "min", text: "aku ada kelas juga, tapi nanti jam 10." },
   { from: "min", text: "maaf ga bisa anter kamu ke kampus yaa sayang, mba yura heboh banget dari pagi minta anterin ke pasar." },
   { from: "min", text: "nih liat, orangnya udah siap", photo: "assets/mba-yura.jpg" },
-  { from: "min", text: "padahal aku mau ketemu kamu " },
+  { from: "min", text: "padahal aku mau ketemu kamu" },
 
   { from: "me", text: "HAHAHA gapapa tau kak, kasian itu mba yuranya pasti kangen kamu juga", reply: 13 },
   { from: "me", text: "lagian kamu tiap hari udah ketemu aku, emang ngga bosen?", reply: 15 },
