@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f8dce8">
+  <title>minjae, my favorite person ♡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="phone" id="phone">
+
+    <div class="dynamic-island"></div>
+
+    <div class="status-bar" id="statusBar">
+      <span id="statusTime">09:41</span>
+      <span class="status-right">●●● ▰</span>
+    </div>
+
+    <!-- LOCKSCREEN -->
+    <section class="screen lockscreen active" id="lockScreen">
+      <div class="lockscreen-content">
+        <div class="lock-date" id="lockDate">Saturday, November 7</div>
+        <div class="lock-time" id="lockTime">09:41</div>
+
+        <div class="lock-music glass">
+          <img src="assets/cover-slow-tide.jpg" alt="Slow Tide">
+          <div class="music-details">
+            <strong>Slow Tide</strong>
+            <span>the song playing right now</span>
+            <div class="music-progress"><i></i></div>
+            <div class="music-controls">Ⅱ　◀　▶</div>
+          </div>
+          <span class="music-more">•••</span>
+        </div>
+
+        <div class="lock-notifications">
+          <button class="notification glass" id="firstNotification">
+            <span class="notification-app whatsapp-mini">☎</span>
+            <span class="notification-text">
+              <b>min(e)💕</b>
+              <span>good morning, sweetheart &lt;3</span>
+              <span>udah bangun belum?</span>
+            </span>
+            <small>now</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="lock-bottom">
+        <span class="lock-shortcut">◉</span>
+        <span class="swipe-hint">swipe up to unlock</span>
+        <span class="lock-shortcut">⌁</span>
+      </div>
+
+      <div class="unlock-zone" id="unlockZone" aria-label="Swipe up to unlock"></div>
+    </section>
+
+    <!-- PIN -->
+    <section class="screen pin-screen" id="pinScreen">
+      <div class="pin-heading">
+        <button id="pinCancel">Cancel</button>
+        <span>Enter Passcode</span>
+        <span></span>
+      </div>
+
+      <div class="pin-main">
+        <div class="pin-icon">♡</div>
+        <h2>Enter Passcode</h2>
+        <p>your little secret</p>
+
+        <div class="pin-dots" id="pinDots">
+          <i></i><i></i><i></i><i></i>
+        </div>
+
+        <p class="pin-error" id="pinError"></p>
+
+        <div class="keypad" id="keypad">
+          <button data-key="1">1</button>
+          <button data-key="2">2<small>ABC</small></button>
+          <button data-key="3">3<small>DEF</small></button>
+          <button data-key="4">4<small>GHI</small></button>
+          <button data-key="5">5<small>JKL</small></button>
+          <button data-key="6">6<small>MNO</small></button>
+          <button data-key="7">7<small>PQRS</small></button>
+          <button data-key="8">8<small>TUV</small></button>
+          <button data-key="9">9<small>WXYZ</small></button>
+          <span></span>
+          <button data-key="0">0</button>
+          <button data-key="delete" class="delete-key">⌫</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMESCREEN -->
+    <section class="screen homescreen" id="homeScreen">
+      <div class="home-top">
+        <span id="homeDate"></span>
+        <span>♡</span>
+      </div>
+
+      <div class="home-notifications" id="homeNotifications">
+        <button class="notification glass" id="secondNotification">
+          <span class="notification-app whatsapp-mini">☎</span>
+          <span class="notification-text">
+            <b>min(e)💕</b>
+            <span>katanya ada kelas pagi</span>
+          </span>
+          <small>now</small>
+        </button>
+      </div>
+
+      
+
+
+<div class="app-grid">
+  <button class="app-icon" data-app="whatsapp">
+    <img src="assets/icon-whatsapp.jpg" alt="WhatsApp">
+    <small>WhatsApp</small>
+  </button>
+
+  <button class="app-icon" data-app="instagram">
+    <img src="assets/icon-instagram.jpg" alt="Instagram">
+    <small>Instagram</small>
+  </button>
+
+  <button class="app-icon" data-app="gallery">
+    <img src="assets/icon-photos.jpg" alt="Photos">
+    <small>Photos</small>
+  </button>
+
+  <button class="app-icon" data-app="music">
+    <img src="assets/icon-music.jpg" alt="Music">
+    <small>Music</small>
+  </button>
+
+  <button class="app-icon" data-app="settings">
+    <img src="assets/icon-setting.jpg" alt="Settings">
+    <small>Settings</small>
+  </button>
+
+  <button class="app-icon">
+    <img src="assets/icon-camera.jpg" alt="Camera">
+    <small>Camera</small>
+  </button>
+
+  <button class="app-icon">
+    <img src="assets/icon-messages.jpg" alt="Messages">
+    <small>Messages</small>
+  </button>
+
+  <button class="app-icon">
+    <img src="assets/icon-phone.jpg" alt="Phone">
+    <small>Phone</small>
+  </button>
+</div>
+
+
+
+      <div class="dock">
+        <span>▣</span><span>◉</span><span>✉</span><span>⌕</span>
+      </div>
+    </section>
+
+    <!-- APP WINDOW -->
+    <section class="screen app-screen" id="appScreen">
+      <header class="app-header">
+        <button id="appBack" aria-label="Back">‹</button>
+        <strong id="appTitle">WhatsApp</strong>
+        <button id="headerAction" aria-label="More">•••</button>
+      </header>
+
+      <div class="app-content" id="appContent"></div>
+
+      <div class="phone-home-indicator" id="homeIndicator"></div>
+    </section>
+
+    <!-- INSTAGRAM STORY NOTIFICATION -->
+   <div class="story-notification-wrap" id="storyNotificationWrap">
+  <button class="notification glass story-notification" id="storyNotification">
+    <span class="notification-app instagram-mini">◎</span>
+    <span class="notification-text">
+      <b>Instagram</b>
+      <span>mr._.sxnflwxr mentioned you in their story</span>
+    </span>
+    <small>now</small>
+  </button>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+<div class="add-to-story">
+ 
+</div>

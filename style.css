@@ -1,0 +1,2479 @@
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap');
+
+:root {
+  --pink: #e9a9c2;
+  --deep-pink: #bd7194;
+  --pale-pink: #fff0f5;
+  --ink: #493843;
+  --muted: #9b8491;
+  --white: #fffafd;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  background: #f4e9ee;
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+}
+
+button {
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.phone {
+  width: min(390px, 100vw);
+  height: min(844px, 100dvh);
+  min-height: 600px;
+  position: relative;
+  overflow: hidden;
+  background: #fff7fa;
+  border: 7px solid #29242a;
+  border-radius: 42px;
+  box-shadow: 0 22px 65px #4e304033;
+  isolation: isolate;
+}
+
+.dynamic-island {
+  position: absolute;
+  z-index: 30;
+  width: 105px;
+  height: 27px;
+  top: 9px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20px;
+  background: #171419;
+}
+
+.status-bar {
+  position: absolute;
+  z-index: 25;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 43px;
+  padding: 11px 24px 0;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.status-right {
+  letter-spacing: 2px;
+}
+
+.screen {
+  position: absolute;
+  inset: 0;
+  display: none;
+  overflow: hidden;
+}
+
+.screen.active {
+  display: block;
+}
+
+.glass {
+  background: rgba(255, 247, 251, .72);
+  border: 1px solid rgba(255,255,255,.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 5px 22px #4c263018;
+}
+
+/* LOCKSCREEN */
+
+.lockscreen {
+  background: #d8b6c4 url("assets/lockscreen.jpg") center/cover no-repeat;
+  color: white;
+}
+
+.lockscreen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(22,12,22,.16),
+    transparent 35%,
+    rgba(22,12,22,.22)
+  );
+  pointer-events: none;
+}
+
+.lockscreen-content {
+  position: relative;
+  z-index: 2;
+  padding: 105px 17px 90px;
+  text-align: center;
+}
+
+.lock-date {
+  font-size: 15px;
+  font-weight: 500;
+  text-shadow: 0 1px 8px #0005;
+}
+
+.lock-time {
+  margin-top: 3px;
+  font-size: clamp(66px, 19vw, 82px);
+  line-height: 1.12;
+  font-weight: 400;
+  letter-spacing: -5px;
+  text-shadow: 0 2px 15px #0004;
+}
+
+.lock-music {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 12px;
+  border-radius: 19px;
+  color: #493843;
+  text-align: left;
+}
+
+.lock-music img {
+  width: 66px;
+  height: 66px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.music-details {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.music-details strong {
+  font-size: 13px;
+}
+
+.music-details > span {
+  font-size: 10px;
+  color: #846e7a;
+}
+
+.music-progress {
+  height: 3px;
+  background: #d9c5cf;
+  border-radius: 5px;
+  margin-top: 4px;
+}
+
+.music-progress i {
+  display: block;
+  width: 38%;
+  height: 100%;
+  background: #a96c8a;
+  border-radius: 5px;
+}
+
+.music-controls {
+  font-size: 12px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+.music-more {
+  align-self: flex-start;
+  font-size: 15px;
+  letter-spacing: 1px;
+}
+
+.lock-notifications {
+  margin-top: 13px;
+}
+
+.notification {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 13px;
+  border-radius: 17px;
+  text-align: left;
+  color: #493843;
+}
+
+.notification-app {
+  width: 29px;
+  height: 29px;
+  flex: 0 0 29px;
+  display: grid;
+  place-items: center;
+  color: white;
+  border-radius: 9px;
+  font-size: 17px;
+}
+
+.whatsapp-mini {
+  background: #d68eae;
+}
+
+.instagram-mini {
+  background: linear-gradient(135deg, #f7b16e, #d66b9d, #9066bc);
+}
+
+.notification-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.notification-text b {
+  font-size: 12px;
+}
+
+.notification > small {
+  font-size: 9px;
+  color: #8c7782;
+  white-space: nowrap;
+}
+
+.lock-bottom {
+  position: absolute;
+  z-index: 3;
+  bottom: 18px;
+  left: 22px;
+  right: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lock-shortcut {
+  width: 39px;
+  height: 39px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ffffff35;
+  backdrop-filter: blur(10px);
+}
+
+.swipe-hint {
+  font-size: 11px;
+  text-shadow: 0 1px 5px #0008;
+}
+
+.unlock-zone {
+  position: absolute;
+  z-index: 5;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 90px;
+  cursor: pointer;
+}
+
+/* PIN SCREEN */
+
+.pin-screen {
+  background: linear-gradient(160deg, #fff7fa, #f5dce8);
+}
+
+.pin-heading {
+  position: absolute;
+  top: 55px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.pin-heading button {
+  padding: 0;
+  background: none;
+  color: var(--deep-pink);
+}
+
+.pin-main {
+  position: absolute;
+  inset: 110px 0 20px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pin-icon {
+  color: var(--deep-pink);
+  font-size: 28px;
+}
+
+.pin-main h2 {
+  margin: 10px 0 4px;
+  font-size: 19px;
+}
+
+.pin-main > p:not(.pin-error) {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.pin-dots {
+  display: flex;
+  gap: 15px;
+  margin: 27px 0 10px;
+}
+
+.pin-dots i {
+  width: 11px;
+  height: 11px;
+  border: 1px solid #bd88a2;
+  border-radius: 50%;
+}
+
+.pin-dots i.filled {
+  background: #bd7194;
+}
+
+.pin-error {
+  height: 16px;
+  margin: 0;
+  color: #b54d72;
+  font-size: 11px;
+}
+
+.keypad {
+  width: 250px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 13px 20px;
+  margin-top: 20px;
+}
+
+.keypad button {
+  height: 61px;
+  border-radius: 50%;
+  background: #ffffffb8;
+  color: #654c5a;
+  font-size: 24px;
+  box-shadow: 0 3px 10px #a66d8614;
+}
+
+.keypad button small {
+  display: block;
+  font-size: 7px;
+  letter-spacing: 1px;
+}
+
+.keypad .delete-key {
+  font-size: 19px;
+  background: transparent;
+  box-shadow: none;
+}
+
+/* HOMESCREEN */
+
+.homescreen {
+  background: #dfb9ca url("assets/homescreen.jpg") center/cover no-repeat;
+}
+
+.home-top {
+  position: absolute;
+  top: 60px;
+  left: 23px;
+  right: 23px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 12px;
+  text-shadow: 0 1px 5px #0005;
+}
+
+.home-notifications {
+  position: absolute;
+  z-index: 4;
+  top: 100px;
+  left: 12px;
+  right: 12px;
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
+  transition: .35s ease;
+}
+
+.home-notifications.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.home-notifications .notification {
+  background: #fff5f9e8;
+}
+
+.app-grid {
+  position: absolute;
+  top: 43%;
+  left: 25px;
+  right: 25px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px 12px;
+}
+
+.app-icon {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 6px;
+  background: transparent;
+  color: white;
+  text-shadow: 0 1px 5px #0007;
+}
+
+.app-art {
+  width: 53px;
+  height: 53px;
+  display: grid;
+  place-items: center;
+  border-radius: 15px;
+  font-size: 28px;
+  color: white;
+  box-shadow: 0 5px 12px #0002;
+}
+
+.app-icon small {
+  font-size: 10px;
+}
+
+.wa-art { background: #d58eac; }
+.ig-art { background: linear-gradient(135deg, #f7b16e, #d66b9d, #9066bc); }
+.photos-art { background: #fff4f8; color: #d47fa4; }
+.music-art { background: #9b7a9e; }
+.settings-art { background: #8b8994; }
+
+.dock {
+  position: absolute;
+  bottom: 25px;
+  left: 15px;
+  right: 15px;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 24px;
+  background: #ffffff55;
+  backdrop-filter: blur(18px);
+  color: white;
+  font-size: 25px;
+}
+
+/* APP SCREEN */
+
+.app-screen {
+  background: #fff8fb;
+  color: var(--ink);
+}
+
+.app-header {
+  height: 57px;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff8fb;
+  border-bottom: 1px solid #f3e3eb;
+  position: relative;
+  z-index: 4;
+}
+
+.app-header button {
+  background: transparent;
+  color: var(--deep-pink);
+  font-size: 27px;
+  min-width: 32px;
+}
+
+.app-header strong {
+  font-size: 14px;
+}
+
+.app-content {
+  height: calc(100% - 85px);
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.app-content::-webkit-scrollbar {
+  display: none;
+}
+
+.phone-home-indicator {
+  position: absolute;
+  z-index: 10;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 110px;
+  height: 4px;
+  border-radius: 5px;
+  background: #4b3c45;
+}
+
+/* WHATSAPP */
+
+.wa-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #f9e8ef;
+}
+
+.wa-contact {
+  height: 65px;
+  padding: 8px 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff8fb;
+  border-bottom: 1px solid #efdce5;
+}
+
+.wa-contact img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.wa-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.wa-contact-info b {
+  font-size: 13px;
+}
+
+.wa-contact-info span {
+  color: #9b8491;
+  font-size: 10px;
+}
+
+.chat-area {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  padding: 13px 10px;
+
+  background:
+    linear-gradient(
+      rgba(251, 238, 243, 0.35),
+      rgba(251, 238, 243, 0.35)
+    ),
+    url("assets/wa-wallpaper.jpg") center center / cover no-repeat;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: none;
+}
+
+.chat-day {
+  align-self: center;
+  padding: 6px 12px;
+  margin-bottom: 5px;
+  background: #fff9fcdd;
+  border-radius: 12px;
+  color: #987b8c;
+  font-size: 9px;
+}
+
+.chat-bubble {
+  max-width: 84%;
+  padding: 8px 10px 5px;
+  border-radius: 13px;
+  font-size: 11px;
+  line-height: 1.45;
+  box-shadow: 0 1px 2px #5b334012;
+  animation: bubbleIn .22s ease both;
+  overflow-wrap: anywhere;
+}
+
+.chat-bubble.incoming {
+  align-self: flex-start;
+  background: #fffafd;
+  border-top-left-radius: 4px;
+}
+
+.chat-bubble.outgoing {
+  align-self: flex-end;
+  background: #f5cfe0;
+  border-top-right-radius: 4px;
+}
+
+.chat-bubble img {
+  display: block;
+  width: 190px;
+  max-width: 100%;
+  border-radius: 9px;
+  margin-bottom: 5px;
+}
+
+.chat-quote {
+  padding: 5px 7px;
+  margin-bottom: 5px;
+  border-left: 3px solid #bd7194;
+  border-radius: 4px;
+  background: #e9dce3;
+  color: #826a79;
+  font-size: 9px;
+}
+
+.chat-time {
+  display: inline-block;
+  float: right;
+  margin: 4px 0 0 9px;
+  color: #9c8290;
+  font-size: 8px;
+}
+
+.chat-ticks {
+  color: #6a9cb2;
+  margin-left: 3px;
+  font-size: 9px;
+}
+
+.typing-indicator {
+  align-self: flex-start;
+  display: none;
+  padding: 9px 12px;
+  border-radius: 13px;
+  background: #fffafd;
+  color: #a27d91;
+  font-size: 10px;
+}
+
+.typing-indicator.show {
+  display: block;
+}
+
+.fake-keyboard {
+  display: none;
+  padding: 9px 6px 12px;
+  background: #f3e8ed;
+  border-top: 1px solid #e7d6df;
+}
+
+.fake-keyboard.show {
+  display: block;
+}
+
+.keyboard-suggestion {
+  display: flex;
+  justify-content: space-around;
+  padding-bottom: 8px;
+  color: #806b79;
+  font-size: 10px;
+}
+
+.keyboard-keys {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 4px;
+}
+
+.keyboard-keys span {
+  display: grid;
+  place-items: center;
+  height: 28px;
+  border-radius: 5px;
+  background: #fffafd;
+  color: #765e6d;
+  font-size: 10px;
+  box-shadow: 0 1px 1px #0001;
+}
+
+.keyboard-bottom {
+  display: flex;
+  gap: 5px;
+  margin-top: 6px;
+}
+
+.keyboard-bottom span {
+  flex: 1;
+  padding: 7px;
+  border-radius: 5px;
+  background: #fffafd;
+  text-align: center;
+  color: #765e6d;
+  font-size: 9px;
+}
+
+.chat-ending {
+  padding: 16px 13px 20px;
+  text-align: center;
+  color: #8d6f80;
+  background: #fff7fa;
+}
+
+.chat-ending p {
+  margin: 5px 0;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.chat-ending strong {
+  color: #b56f91;
+}
+
+/* INSTAGRAM */
+
+.ig-page {
+  min-height: 100%;
+  background: white;
+}
+
+.ig-top {
+  padding: 14px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.ig-profile {
+  padding: 10px 14px;
+}
+
+.ig-profile-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.ig-avatar {
+  width: 78px;
+  height: 78px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 3px;
+  border: 2px solid #d88eae;
+}
+
+.ig-stats {
+  flex: 1;
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.ig-stats b {
+  display: block;
+  font-size: 14px;
+}
+
+.ig-stats span {
+  font-size: 9px;
+}
+
+.ig-username {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.ig-bio {
+  margin-top: 4px;
+  font-size: 10px;
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.ig-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.ig-actions button {
+  flex: 1;
+  padding: 8px 5px;
+  border-radius: 7px;
+  background: #f4e9ee;
+  color: #614b59;
+  font-size: 10px;
+}
+
+.ig-highlights {
+  display: flex;
+  gap: 16px;
+  padding: 13px 14px;
+  overflow-x: auto;
+}
+
+.ig-highlight {
+  flex: 0 0 58px;
+  text-align: center;
+  background: transparent;
+  color: #493843;
+  font-size: 9px;
+}
+
+.ig-highlight img {
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+  border-radius: 50%;
+  padding: 3px;
+  border: 1px solid #d6b4c4;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.ig-tabs {
+  display: flex;
+  justify-content: space-around;
+  padding: 11px;
+  border-top: 1px solid #eee;
+  color: #947f8c;
+}
+
+.ig-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.ig-grid button {
+  padding: 0;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: #f5e5ed;
+}
+
+.ig-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ig-post {
+  background: white;
+  min-height: 100%;
+}
+
+.ig-post-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.ig-post-head img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ig-post-image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  max-height: 460px;
+  background: #f5e5ed;
+}
+
+.ig-post-controls {
+  padding: 10px 12px 0;
+  font-size: 20px;
+}
+
+.ig-caption {
+  padding: 7px 12px 15px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.ig-caption b {
+  margin-right: 4px;
+}
+
+.ig-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 7px;
+}
+
+.ig-carousel-dots i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #d7c2cd;
+}
+
+.ig-carousel-dots i.active {
+  background: #bd7194;
+}
+
+.story-view {
+  height: 100%;
+  position: relative;
+  background: #211a21;
+  color: white;
+  overflow: hidden;
+}
+
+.story-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #211a21;
+}
+
+.story-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(#0005, transparent 25%, transparent 75%, #0007);
+}
+
+.story-progress {
+  position: absolute;
+  top: 9px;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  background: #ffffff70;
+  border-radius: 5px;
+}
+
+.story-progress i {
+  display: block;
+  height: 100%;
+  width: 100%;
+  background: white;
+}
+
+.story-user {
+  position: absolute;
+  top: 22px;
+  left: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+}
+
+.story-user img {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.story-mention {
+  position: absolute;
+  left: 50%;
+  top: 58%;
+  transform: translate(-50%, -50%);
+  padding: 8px 13px;
+  border-radius: 8px;
+  background: #ffffffd9;
+  color: #9d5579;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.story-add {
+  position: absolute;
+  bottom: 18px;
+  left: 14px;
+  right: 14px;
+  padding: 11px;
+  border: 1px solid #ffffffa0;
+  border-radius: 25px;
+  text-align: center;
+  color: white;
+  font-size: 11px;
+}
+
+/* GALLERY */
+
+.gallery-page {
+  min-height: 100%;
+  padding: 16px;
+  background: #fff9fc;
+}
+
+.gallery-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  margin: 4px 0 18px;
+}
+
+.album-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.album-card {
+  padding: 0;
+  overflow: hidden;
+  border-radius: 13px;
+  background: #f4e5ec;
+  color: #624b5a;
+  text-align: left;
+}
+
+.album-card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+}
+
+.album-card b,
+.album-card small {
+  display: block;
+  padding: 0 9px;
+}
+
+.album-card b {
+  padding-top: 8px;
+  font-size: 11px;
+}
+
+.album-card small {
+  padding-top: 3px;
+  padding-bottom: 10px;
+  color: #9b8491;
+  font-size: 9px;
+}
+
+.gallery-photos {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.gallery-photos button {
+  padding: 0;
+  aspect-ratio: 1;
+  background: #f2e4eb;
+}
+
+.gallery-photos img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-view {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  background: #241d23;
+}
+
+.photo-view img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* OTHER APPS */
+
+.simple-page {
+  padding: 20px;
+  background: #fff8fb;
+  min-height: 100%;
+}
+
+.simple-page h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+}
+
+.simple-card {
+  padding: 15px;
+  margin: 12px 0;
+  border-radius: 15px;
+  background: #f8e8ef;
+  font-size: 12px;
+}
+
+.story-notification-wrap {
+  position: absolute;
+  z-index: 50;
+  top: 48px;
+  left: 10px;
+  right: 10px;
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  transition: .3s ease;
+}
+
+.story-notification-wrap.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.story-notification {
+  background: #fff7fbeF;
+}
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-height: 700px) {
+  .lockscreen-content {
+    padding-top: 75px;
+  }
+
+  .lock-time {
+    font-size: 65px;
+  }
+
+  .lock-music {
+    margin-top: 18px;
+  }
+
+  .keypad {
+    gap: 8px 17px;
+  }
+
+  .keypad button {
+    height: 52px;
+  }
+}
+ strong {
+  font-size: 10px;
+}
+
+.ig-post-image-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  background: #f7edf1;
+}
+
+.ig-post-image-wrap > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ig-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  color: var(--text);
+  font-size: 18px;
+}
+
+.ig-carousel-arrow.prev {
+  left: 9px;
+}
+
+.ig-carousel-arrow.next {
+  right: 9px;
+}
+
+.ig-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px;
+}
+
+.ig-carousel-dots span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ddd;
+}
+
+.ig-carousel-dots span.active {
+  background: var(--pink-dark);
+}
+
+.ig-post-actions {
+  display: flex;
+  gap: 14px;
+  padding: 5px 13px;
+  font-size: 21px;
+}
+
+.ig-post-caption {
+  padding: 4px 13px 16px;
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.ig-post-caption strong {
+  margin-right: 4px;
+}
+
+/* =================================
+   11. INSTAGRAM STORIES
+================================= */
+
+.ig-story-view,
+.story-page {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #30252c;
+}
+
+.story-progress {
+  position: absolute;
+  z-index: 5;
+  top: 42px;
+  left: 10px;
+  right: 10px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 5px;
+  background: rgba(255,255,255,.4);
+}
+
+.story-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+
+.story-user {
+  position: absolute;
+  z-index: 5;
+  top: 53px;
+  left: 13px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  font-size: 10px;
+  text-shadow: 0 1px 5px #333;
+}
+
+.story-user img {
+  width: 31px;
+  height: 31px;
+  border: 1px solid white;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.story-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #30252c;
+}
+
+.story-caption {
+  position: absolute;
+  bottom: 100px;
+  left: 15px;
+  right: 15px;
+  color: white;
+  text-align: center;
+  font-size: 14px;
+  text-shadow: 0 1px 5px #333;
+}
+
+.story-mention {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 8px 15px;
+  border-radius: 18px;
+  background: rgba(255,255,255,.2);
+  color: white;
+  font-size: 10px;
+  white-space: nowrap;
+}
+
+.story-left,
+.story-right {
+  position: absolute;
+  z-index: 4;
+  top: 90px;
+  bottom: 85px;
+  width: 38%;
+  background: transparent;
+}
+
+.story-left {
+  left: 0;
+}
+
+.story-right {
+  right: 0;
+}
+
+.story-close,
+.story-back {
+  position: absolute;
+  z-index: 8;
+  top: 45px;
+  right: 14px;
+  background: transparent;
+  color: white;
+  font-size: 23px;
+}
+
+.story-back {
+  left: 13px;
+  right: auto;
+}
+
+/* =================================
+   12. GALLERY
+================================= */
+
+.gallery-page {
+  height: 100%;
+  overflow-y: auto;
+  padding: 42px 15px 20px;
+  background: white;
+}
+
+.gallery-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 16px;
+}
+
+.gallery-heading span {
+  color: var(--pink-dark);
+}
+
+.album-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 9px;
+  margin-bottom: 10px;
+  border-radius: 13px;
+  background: #fff7fa;
+  text-align: left;
+}
+
+.album-preview {
+  width: 67px;
+  height: 67px;
+  flex-shrink: 0;
+  border-radius: 9px;
+  object-fit: cover;
+}
+
+.album-card strong {
+  display: block;
+  font-size: 12px;
+}
+
+.album-card small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+/* =================================
+   13. ALBUM DETAIL
+================================= */
+
+.album-page {
+  height: 100%;
+  overflow-y: auto;
+  background: white;
+}
+
+.album-heading {
+  min-height: 65px;
+  padding: 35px 15px 10px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 13px;
+}
+
+.album-heading button,
+.photo-heading button {
+  background: transparent;
+  color: var(--pink-dark);
+  font-size: 24px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+}
+
+.gallery-grid button {
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--pink-light);
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =================================
+   14. PHOTO VIEWER
+================================= */
+
+.photo-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #211b20;
+}
+
+.photo-heading {
+  flex-shrink: 0;
+  min-height: 65px;
+  padding: 35px 15px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: white;
+  font-size: 10px;
+}
+
+.photo-heading button {
+  color: white;
+}
+
+.photo-viewer {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.photo-viewer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.photo-controls {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 25px 25px;
+}
+
+.photo-controls button {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  color: white;
+  font-size: 20px;
+}
+
+/* =================================
+   15. MUSIC
+================================= */
+
+.music-page {
+  height: 100%;
+  padding: 65px 25px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(160deg, #fff2f7, #f9dce8);
+}
+
+.music-page-cover {
+  width: 235px;
+  height: 235px;
+  margin-bottom: 25px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.music-page-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.music-page h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 23px;
+}
+
+.music-page p {
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.music-page-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 35px;
+  font-size: 20px;
+}
+
+.music-page-controls button {
+  background: transparent;
+  color: var(--text);
+}
+
+.music-page-controls .play-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--pink-dark);
+  color: white;
+}
+
+/* =================================
+   16. SETTINGS
+================================= */
+
+.settings-page {
+  height: 100%;
+  overflow-y: auto;
+  padding: 55px 15px 20px;
+  background: #f7f5f7;
+}
+
+.settings-profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px;
+  margin-bottom: 18px;
+  background: white;
+  border-radius: 14px;
+}
+
+.settings-profile img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.settings-profile strong,
+.settings-profile small {
+  display: block;
+}
+
+.settings-profile strong {
+  font-size: 12px;
+}
+
+.settings-profile small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.settings-list {
+  overflow: hidden;
+  border-radius: 12px;
+  background: white;
+}
+
+.settings-list div {
+  padding: 15px;
+  border-bottom: 1px solid #f1edf0;
+  font-size: 11px;
+}
+
+/* =================================
+   17. RESPONSIVE
+================================= */
+
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+    background: white;
+  }
+
+  #device {
+    width: 100vw;
+    height: 100dvh;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
+  }
+}
+
+@media (max-height: 680px) {
+  #device {
+    height: 100vh;
+    min-height: 0;
+  }
+
+  .lock-time {
+    font-size: 65px;
+  }
+
+  .keypad {
+    gap: 8px;
+  }
+
+  .keypad button {
+    width: 57px;
+    height: 57px;
+  }
+
+  .pin-title {
+    margin-top: 35px;
+  }
+}
+
+/* =========================================
+   HOMESCREEN - IPHONE STYLE
+========================================= */
+
+.home-screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 48px 18px 105px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+
+/* Tanggal di homescreen */
+
+.home-date {
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 5px rgba(0,0,0,.35);
+}
+
+/* =========================================
+   NOTIFICATION
+========================================= */
+
+.home-notifications {
+  display: none;
+  position: relative;
+  z-index: 20;
+  margin-bottom: 15px;
+}
+
+.home-notifications.show {
+  display: block;
+}
+
+.notification {
+  width: 100%;
+  min-height: 65px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 17px;
+  color: #28242a;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.glass {
+  background: rgba(255,255,255,.78);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.notification-copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+  font-size: 12px;
+}
+
+.notification-copy b {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.notification-copy span {
+  overflow-wrap: anywhere;
+}
+
+.notification > small {
+  align-self: flex-start;
+  color: #777;
+  font-size: 10px;
+}
+
+.wa-mini {
+  width: 31px;
+  height: 31px;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9px;
+  background: #25c76a;
+  color: white;
+  font-size: 17px;
+}
+
+/* =========================================
+   APP GRID
+========================================= */
+
+.app-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: repeat(5, auto);
+  column-gap: 10px;
+  row-gap: 19px;
+  width: 100%;
+  margin: auto 0 0;
+  align-content: center;
+  justify-items: center;
+}
+
+.app-icon {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: white;
+  cursor: pointer;
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.app-icon:active .app-art {
+  transform: scale(.91);
+}
+
+.app-art {
+  width: clamp(49px, 14vw, 65px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 22%;
+  box-shadow: 0 4px 10px rgba(0,0,0,.2);
+  font-size: 29px;
+  transition: transform .15s ease;
+}
+
+.app-icon small {
+  max-width: 100%;
+  color: white;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 500;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0,0,0,.8);
+  white-space: nowrap;
+}
+
+/* =========================================
+   DECORATIVE APP ICONS
+========================================= */
+
+/* Weather */
+
+.weather-art {
+  background: linear-gradient(145deg, #152b4e, #09152d);
+  color: #f6e6a5;
+}
+
+/* FaceTime */
+
+.facetime-art {
+  background: linear-gradient(145deg, #54e875, #16b94e);
+  color: white;
+}
+
+/* Contacts */
+
+.contacts-art {
+  background: linear-gradient(90deg, #e5e5e5 0 72%, #f1a54b 72% 82%, #65b9d8 82%);
+  color: #aaa;
+  font-size: 35px;
+}
+
+/* Camera */
+
+.camera-art {
+  background: linear-gradient(145deg, #dedede, #aeb1b4);
+  color: #333;
+  font-size: 29px;
+}
+
+/* Wallet */
+
+.wallet-art {
+  background: #222;
+  color: #f4bd4d;
+}
+
+/* Entertainment folder */
+
+.entertainment-art,
+.navigation-art,
+.finance-art {
+  background: rgba(20,25,35,.85);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px;
+  gap: 5px;
+  font-size: 15px;
+}
+
+.entertainment-art span:nth-child(1) {
+  color: #f44336;
+}
+
+.entertainment-art span:nth-child(2) {
+  color: #55d879;
+}
+
+.entertainment-art span:nth-child(3) {
+  color: #56a9ff;
+}
+
+/* Notes */
+
+.notes-art {
+  background: linear-gradient(
+    to bottom,
+    #f5d34e 0 25%,
+    #fff 25% 100%
+  );
+  color: #a6a6a6;
+  font-size: 24px;
+}
+
+/* Clock */
+
+.clock-art {
+  background: #f8f8f8;
+  color: #333;
+  font-size: 40px;
+}
+
+/* Navigation */
+
+.navigation-art {
+  color: #63cf9a;
+}
+
+/* Finance */
+
+.finance-art {
+  color: #f3c85c;
+}
+
+/* Photos */
+
+.photos-art {
+  background: #fff;
+  color: #f5a34d;
+  font-size: 37px;
+  text-shadow:
+    2px 0 #e85d72,
+    -2px 0 #62b8ee;
+}
+
+/* Calendar */
+
+.calendar-art {
+  background: white;
+  color: #222;
+  flex-direction: column;
+  gap: 0;
+}
+
+.calendar-art b {
+  color: #e44c55;
+  font-size: 11px;
+}
+
+.calendar-art strong {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+/* Gmail */
+
+.gmail-art {
+  background: white;
+  color: #e64c42;
+  font-size: 39px;
+  font-weight: 800;
+}
+
+/* App Store */
+
+.appstore-art {
+  background: linear-gradient(145deg, #48c5fa, #1674d9);
+  color: white;
+  font-size: 38px;
+}
+
+/* Safari */
+
+.safari-art {
+  background: white;
+  color: #238de1;
+  font-size: 38px;
+}
+
+/* Settings */
+
+.settings-art {
+  background: linear-gradient(145deg, #e5e5e5, #a4a4a4);
+  color: #777;
+  font-size: 34px;
+}
+
+/* Snapchat */
+
+.snapchat-art {
+  background: #ffeb00;
+  color: white;
+  text-shadow: 1px 1px 2px #444;
+}
+
+/* Instagram */
+
+.ig-art {
+  background: linear-gradient(
+    145deg,
+    #7954cf,
+    #e83d82 55%,
+    #ffad4c
+  );
+  color: white;
+  font-size: 39px;
+  font-weight: 300;
+}
+
+/* Twitter */
+
+.twitter-art {
+  background: #279be8;
+  color: white;
+  font-size: 29px;
+}
+
+/* TikTok */
+
+.tiktok-art {
+  background: #080808;
+  color: #fff;
+  font-size: 37px;
+  text-shadow: -2px 0 #35e8eb, 2px 0 #ff3d6c;
+}
+
+/* =========================================
+   DOCK
+========================================= */
+
+.dock {
+  position: absolute;
+  bottom: 13px;
+  left: 15px;
+  right: 15px;
+  min-height: 78px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+  padding: 8px 10px;
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 25px;
+  background: rgba(255,255,255,.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.dock-icon {
+  width: clamp(45px, 13vw, 59px);
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 22%;
+  color: white;
+  font-size: 30px;
+  box-shadow: 0 3px 8px rgba(0,0,0,.2);
+}
+
+.phone-dock {
+  background: linear-gradient(145deg, #54e77d, #13b74f);
+}
+
+.whatsapp-dock {
+  background: #20c969;
+  cursor: pointer;
+}
+
+.spotify-dock {
+  background: #101010;
+  color: #1ed760;
+  font-size: 39px;
+}
+
+.messages-dock {
+  background: linear-gradient(145deg, #56d9a0, #16b86b);
+  position: relative;
+}
+
+.messages-dock span {
+  width: 23px;
+  height: 17px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 7px;
+  background: white;
+  color: #39c987;
+  font-size: 12px;
+}
+
+/* =========================================
+   SMALL SCREEN ADJUSTMENT
+========================================= */
+
+@media (max-height: 720px) {
+  .home-screen {
+    padding-top: 40px;
+    padding-bottom: 95px;
+  }
+
+  .home-date {
+    margin-bottom: 12px;
+  }
+
+  .app-grid {
+    row-gap: 11px;
+  }
+
+  .app-art {
+    width: clamp(43px, 12vw, 55px);
+  }
+
+  .dock {
+    min-height: 65px;
+    bottom: 9px;
+  }
+}
+
+@media (max-width: 350px) {
+  .home-screen {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+
+  .app-grid {
+    column-gap: 5px;
+  }
+
+  .app-icon small {
+    font-size: 9px;
+  }
+}
+
+/* WHATSAPP TYPING DOTS */
+
+.typing-indicator {
+  display: none;
+  align-self: flex-start;
+  align-items: center;
+  gap: 4px;
+  width: 48px;
+  height: 30px;
+  padding: 0 11px;
+  border-radius: 14px;
+  border-top-left-radius: 4px;
+  background: #fffafd;
+}
+
+.typing-indicator.show {
+  display: flex;
+}
+
+.typing-indicator i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c18aa5;
+  animation: typingBounce 1s infinite ease-in-out;
+}
+
+.typing-indicator i:nth-child(2) {
+  animation-delay: .15s;
+}
+
+.typing-indicator i:nth-child(3) {
+  animation-delay: .3s;
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: .5;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* WHATSAPP TYPING DOTS */
+.typing-indicator {
+  display: none;
+  align-self: flex-start;
+  align-items: center;
+  gap: 4px;
+  width: 48px;
+  height: 30px;
+  padding: 0 11px;
+  border-radius: 14px;
+  border-top-left-radius: 4px;
+  background: #fffafd;
+}
+
+.typing-indicator.show {
+  display: flex;
+}
+
+.typing-indicator i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c18aa5;
+  animation: typingBounce 1s infinite ease-in-out;
+}
+
+.typing-indicator i:nth-child(2) {
+  animation-delay: .15s;
+}
+
+.typing-indicator i:nth-child(3) {
+  animation-delay: .3s;
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% {
+    transform: translateY(0);
+    opacity: .5;
+  }
+  30% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+}
+
+/* CHAT COMPOSER */
+.chat-composer {
+  display: none;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 9px;
+  background: #fff8fb;
+  border-top: 1px solid #f0dce6;
+}
+
+.chat-composer.show {
+  display: flex;
+}
+
+.composer-plus,
+.composer-emoji,
+.composer-send {
+  color: #b77d99;
+  font-size: 19px;
+}
+
+.composer-input {
+  flex: 1;
+  min-height: 34px;
+  padding: 8px 11px;
+  border-radius: 18px;
+  background: #fff;
+  border: 1px solid #ead7e1;
+  color: #594452;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.ig-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ig-switch-profile {
+  border: none;
+  background: #f8e4ed;
+  color: #98647e;
+  border-radius: 12px;
+  padding: 6px 10px;
+  font-size: 10px;
+  cursor: pointer;
+}
+.highlight-nav {
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  width: 50%;
+  border: none;
+  background: transparent;
+  z-index: 5;
+}
+
+.highlight-prev {
+  left: 0;
+}
+
+.highlight-next {
+  right: 0;
+}
+
+.ig-post-photo-wrap {
+  position: relative;
+  width: 100%;
+}
+
+.ig-post-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.collab-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255,255,255,.85);
+  color: #79566a;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 3;
+}
+
+.collab-arrow.prev {
+  left: 9px;
+}
+
+.collab-arrow.next {
+  right: 9px;
+}
+
+.collab-arrow:disabled {
+  opacity: .3;
+  cursor: default;
+}
+
+/* HOME SCREEN APP ICON IMAGES */
+
+.app-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  overflow: visible;
+}
+
+.app-icon img {
+  width: 72px;
+  height: 72px;
+  display: block;
+  object-fit: cover;
+  border-radius: 22%;
+  box-shadow: 0 5px 12px rgba(80, 40, 60, 0.15);
+}
+
+.app-icon small {
+  font-size: 11px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* IPHONE HOME SCREEN APP GRID */
+
+.app-grid {
+  position: absolute;
+  top: 22%;
+  left: 20px;
+  right: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 8px;
+  row-gap: 22px;
+  justify-items: center;
+  align-items: start;
+}
+
+.app-icon {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.app-icon img {
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.app-icon small {
+  font-size: 10px;
+  color: white;
+  text-align: center;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.45);
+  white-space: nowrap;
+}
+/* FIX APP GRID ALIGNMENT */
+
+.app-grid {
+  position: absolute;
+  top: 22%;
+  left: 18px !important;
+  right: 18px !important;
+  width: auto !important;
+
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  column-gap: 0;
+  row-gap: 22px;
+
+  justify-items: center;
+  align-items: start;
+  box-sizing: border-box;
+}
+
+.app-icon {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+.app-icon img {
+  width: 58px;
+  height: 58px;
+  display: block;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.app-icon small {
+  font-size: 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
